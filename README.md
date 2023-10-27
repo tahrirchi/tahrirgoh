@@ -18,3 +18,18 @@ Be sure to tweak the [frontend/nginx.conf](frontend/nginx.conf) file to your nee
 ```bash
 docker compose up -d
 ```
+
+## Cite
+
+If you use this platform during your reserach, please cite us.
+
+```
+@software{Mamasaidov_Tahrirgoh_is_a_2023,
+author = {Mamasaidov, Mukhammadsaid and Yusupov, Jasur},
+month = oct,
+title = {{Tahrirgoh is a web platform for dataset collection for the Grammatical Error Correction (GEC) task.}},
+url = {https://github.com/tahrirchi/tahrirgoh},
+version = {1.0.0},
+year = {2023}
+}
+```
