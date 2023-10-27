@@ -2,6 +2,8 @@
 
 Tahrirgoh is a web platform developed by Tahrirchi for dataset collection for the Grammatical Error Correction (GEC) task. 
 
+Tahrirgoh is pronounced as `T-AH-REER-GOKH`, and is made up word in Uzbek, meaning a _"place to proofread"_.
+
 ## Interface
 
 ![img.png](https://i.imgur.com/0Qstsm0.png)
