@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Mamasaidov"
+  given-names: "Mukhammadsaid"
+- family-names: "Yusupov"
+  given-names: "Jasur"
+title: "Tahrirgoh is a web platform for dataset collection for the Grammatical Error Correction (GEC) task."
+version: 1.0.0
+date-released: 2023-10-27
+url: "https://github.com/tahrirchi/tahrirgoh"
