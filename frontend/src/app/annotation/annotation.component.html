@@ -1,0 +1,44 @@
+<!--{{annotationService.currentSentenceAnnotations$ | async | json}}-->
+
+<!--{{annotationForDisplay$ | async | json}}-->
+
+<ng-container *ngIf="sentence; else noSentence">
+
+
+  <!--  <div class="flex flex-col items-center space-y-5">-->
+  <div class="text-lg tracking-wide p-4 bg-[#F3F5F9] border-black rounded-lg max-w-full whitespace-pre-wrap break-words"
+       customToolTip>{{sentence.value}}</div>
+
+
+  <div class="text-lg tracking-wide flex flex-wrap items-center bg-white p-4 select-none">
+    <div *ngFor="let aPart of annotationForDisplay$ | async">
+      <div *ngIf="$any(aPart).oldValue || $any(aPart).newValue; else raw"
+           class="inline-flex relative px-2 rounded-lg border bg-white border-[#647481] w-fit">
+        <button
+          class="absolute right-0 p-0.5 top-0 -mt-2 -mr-2 bg-[#647481] text-white rounded-full hover:bg-black transition-all"
+          (click)="deleteAnnotation($any(aPart))">
+          <svg class="h-2.5 w-2.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+               stroke="currentColor"
+               aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        <div class="flex">
+          <span class="text-[#F95A5A] line-through whitespace-pre">{{$any(aPart).oldValue.replace(" ", "⎵")}}</span>
+          <span class="text-[#40D275] font-bold whitespace-pre">{{$any(aPart).newValue.replace(" ", "⎵")}}</span>
+        </div>
+      </div>
+      <ng-template #raw>
+        <!--          <div [innerHTML]="$any(aPart)|replaceSpace" style="word-break: break-all;" class="flex flex-wrap"></div>-->
+        <span *ngIf="$any(aPart) == ' '; else noSpace" class="text-gray-300">⎵</span>
+        <ng-template #noSpace>{{$any(aPart)}}</ng-template>
+      </ng-template>
+    </div>
+  </div>
+  <!--  </div>-->
+</ng-container>
+<ng-template #noSentence>
+  <div class="w-full h-96 flex justify-center items-center">
+    <p class="text-lg text-[#576975] italic">Gap yo'q</p>
+  </div>
+</ng-template>

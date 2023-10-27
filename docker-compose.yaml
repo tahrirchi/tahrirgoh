@@ -1,0 +1,49 @@
+version: "3.9"
+services:
+
+  # FastAPI Application
+  backend:
+    build: ./backend
+    container_name: tahrirgoh-backend
+    volumes:
+      - ./backend:/code
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+  # Angular Application
+  frontend:
+    build: ./frontend
+    container_name: tahrirgoh-frontend
+    volumes:
+      - "/data/certbot/letsencrypt:/etc/letsencrypt"
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    depends_on:
+      - db
+      - backend
+
+
+  # PostgreSQL Database
+  db:
+    image: postgres
+    container_name: tahrirgoh-db
+    volumes:
+      - tahrirgoh-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=tahrirgoh
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - PGUSER=postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "tahrirgoh"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  tahrirgoh-data:

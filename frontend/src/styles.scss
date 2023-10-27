@@ -1,0 +1,192 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$tahrirgoh-primary: mat.define-palette(mat.$indigo-palette);
+$tahrirgoh-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$tahrirgoh-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$tahrirgoh-theme: mat.define-light-theme((
+  color: (
+    primary: $tahrirgoh-primary,
+    accent: $tahrirgoh-accent,
+    warn: $tahrirgoh-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($tahrirgoh-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+* {
+  font-family: 'Mulish', 'Helvetica Neue', sans-serif;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+.tahrirchi-gradient {
+  @apply bg-gradient-to-br from-tahrirchi-gradient-start to-tahrirchi-gradient-end;
+}
+
+
+.btn {
+  @apply flex items-center justify-center text-base font-bold p-2 rounded-full transition-shadow duration-300 py-4 px-6
+  disabled:bg-tahrirchi-gray-500 disabled:opacity-50
+  hover:shadow-[0_4px_9px_0px_rgba(27,46,34,0.2)] tracking-wide;
+  // TODO: override hover
+
+  &.btn-primary {
+    @apply bg-tahrirchi-primary text-white  outline-none;
+  }
+
+  &.btn-action {
+    @apply bg-black text-white;
+  }
+
+  &.btn-secondary {
+    @apply bg-white text-tahrirchi-primary border border-tahrirchi-primary;
+  }
+
+  &.btn-gradient {
+    @apply text-white tahrirchi-gradient;
+  }
+
+  &.btn-tertiary {
+    @apply bg-tahrirchi-primary-card text-tahrirchi-primary hover:shadow-none rounded-full;
+  }
+
+  &.btn-primary-outline {
+    @apply border-2 border-tahrirchi-primary text-tahrirchi-primary rounded-full hover:bg-tahrirchi-primary hover:text-white;
+  }
+
+  &.btn-action-outline {
+    @apply border-2 border-tahrirchi-main-text text-tahrirchi-main-text rounded-full hover:bg-tahrirchi-main-text hover:text-white;
+  }
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  @apply text-tahrirchi-green;
+}
+
+.mat-accordion .mat-expansion-panel-header .mat-content {
+  @apply items-center;
+}
+
+
+.mat-input-element {
+  @apply caret-tahrirchi-green;
+}
+
+
+.mat-text-field--focused:not(.mat-text-field--disabled) .mat-floating-label {
+  @apply text-tahrirchi-green;
+}
+
+.mat-form-field.mat-form-field-appearance-fill {
+  //  /* Disabled */
+  //  &.mat-form-field-disabled {
+  //    opacity: 0.7 !important;
+  //  }
+  //
+  //  /* Invalid */
+  //  &.mat-form-field-invalid {
+  //
+  //    .mat-form-field-wrapper {
+  //
+  //      /* Border color */
+  //      .mat-form-field-flex {
+  //        @apply border-tahrirchi-error dark:border-tahrirchi-error #{'!important'};
+  //      }
+  //    }
+  //  }
+  //
+  //  /* Focused */
+  //  &.mat-focused {
+  //
+  //    .mat-form-field-wrapper {
+  //
+  //      /* Background color */
+  //      .mat-form-field-flex {
+  //        @apply bg-white dark:bg-white #{'!important'};
+  //      }
+  //    }
+  //  }
+  //
+  /* Focused and valid fields */
+  &.mat-focused:not(.mat-form-field-invalid) {
+    .mat-form-field-wrapper {
+      /* Border color */
+      .mat-form-field-flex {
+        @apply border-tahrirchi-primary #{'!important'};
+      }
+    }
+  }
+
+  ///* Disable floating mat-label */
+  //&.mat-form-field-has-label.mat-form-field-can-float.mat-form-field-should-float {
+  //
+  //  .mat-form-field-label-wrapper {
+  //
+  //    .mat-form-field-label {
+  //      width: 100% !important;
+  //      transform: none !important;
+  //    }
+  //  }
+  //}
+  //
+  //  /* Adjustments for mat-label */
+  //  &.mat-form-field-has-label {
+  //
+  //    .mat-form-field-wrapper {
+  //      margin-top: 24px;
+  //    }
+  //  }
+  //
+
+  .mat-form-field-wrapper {
+    //margin-bottom: 16px;
+    //padding-bottom: 0;
+
+    .mat-form-field-flex {
+      //position: relative;
+      //display: flex;
+      //align-items: stretch;
+      min-height: 48px;
+      @apply rounded-xl;
+      padding: 4px 16px 0 16px;
+      border-width: 1px;
+
+      @apply bg-white border-tahrirchi-line #{'!important'};
+    }
+  }
+
+  /* Remove the underline */
+  .mat-form-field-underline {
+    display: none;
+  }
+}
+

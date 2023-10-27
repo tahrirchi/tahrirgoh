@@ -1,0 +1,91 @@
+<!--   -->
+<div class="max-w-full py-4 px-4 sm:px-6 sticky z-40 top-0 bg-white"
+     style="box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.06);">
+  <nav
+    class="flex items-center justify-between sm:h-10 lg:justify-end max-w-7xl mx-auto whitespace-nowrap"
+    aria-label="Global">
+    <div class="basis-1/5 flex items-center">
+      <div class="flex items-center">
+        <div class="flex items-center lg:hidden">
+          <button type="button" class="p-2 focus:outline-none" (click)="toggleMenu()">
+            <span class="sr-only">Open main menu</span>
+            <!-- Heroicon name: outline/menu -->
+            <svg
+              class="h-6 w-6"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+        <a routerLink="" class="inline-flex items-center justify-between space-x-3">
+          <span class="sr-only">Tahrirchi</span>
+          <svg class="h-10" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0 15.105C0 9.87411 0 7.25867 1.00183 5.2537C1.92136 3.41342 3.41342 1.92136 5.2537 1.00183C7.25867 0 9.87411 0 15.105 0H22.895C28.1259 0 30.7413 0 32.7463 1.00183C34.5866 1.92136 36.0786 3.41342 36.9982 5.2537C38 7.25867 38 9.87411 38 15.105V22.895C38 28.1259 38 30.7413 36.9982 32.7463C36.0786 34.5866 34.5866 36.0786 32.7463 36.9982C30.7413 38 28.1259 38 22.895 38H15.105C9.87411 38 7.25867 38 5.2537 36.9982C3.41342 36.0786 1.92136 34.5866 1.00183 32.7463C0 30.7413 0 28.1259 0 22.895V15.105Z"
+              fill="url(#paint0_linear_295_3800)"/>
+            <path
+              d="M16.9443 11.6555H12.3503V18.4529C12.3503 28.8488 18.3055 29.229 22.3891 29.229V24.6667L21.0279 24.6628C18.3481 24.6628 16.9443 22.0475 16.9443 19.3439H22.3891V15.7109H16.9443V11.6555Z"
+              fill="white"/>
+            <path
+              d="M25.9624 7.70248C25.9624 13.1386 22.8146 13.0078 20.5176 13.0078V11.0687C21.4534 11.0687 21.8636 10.3347 21.8788 9.88586C21.8939 9.43702 21.8788 7.60055 21.8788 7.60055H25.9624V7.70248Z"
+              fill="white"/>
+            <path
+              d="M16.9443 11.6555V15.7109C15.9234 14.4267 15.5831 12.4722 15.5405 11.6555H16.9443Z"
+              fill="#3BB467"
+              fill-opacity="0.2"/>
+            <path
+              d="M22.3894 27.1597V29.2296C18.4759 29.3141 16.8595 28.427 16.1364 27.9201C18.6546 28.3594 21.3543 27.5962 22.3894 27.1597Z"
+              fill="#3BB467"
+              fill-opacity="0.2"/>
+            <path
+              d="M25.9625 7.59998H24.6013C25.1458 8.74901 24.6013 11.1907 24.3035 12.2468C25.7073 11.3597 25.9625 9.163 25.9625 7.59998Z"
+              fill="#3BB467"
+              fill-opacity="0.2"/>
+            <defs>
+              <linearGradient
+                id="paint0_linear_295_3800"
+                x1="35.6225"
+                y1="35.9509"
+                x2="0.23415"
+                y2="-0.229027"
+                gradientUnits="userSpaceOnUse">
+                <stop stop-color="#2CC162"/>
+                <stop offset="1" stop-color="#8CE66B"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="font-extrabold text-3xl">Tahrirgoh</span>
+        </a>
+      </div>
+    </div>
+    <!--    *ngIf="!(currentRoute | async).includes('login')"-->
+    <div
+
+      class="basis-1/5 hidden lg:flex lg:space-x-8 tracking-wide flex-grow text-tahrirchi-main-text font-semibold justify-center">
+
+      <p *ngIf="authService.userValue">
+              Tahrirchi: <span class="capitalize">{{authService.userValue.username}}</span>
+      </p>
+
+    </div>
+
+    <div class="flex space-x-6" *ngIf="authService.userInfo$ | async">
+      <div class="flex space-x-1">
+        <p>Tahrirlar soni:</p>
+        <p class="font-bold" matTooltip="Umumiy">{{(authService.userInfo$ | async).annotations_added}}</p>
+        <p class="font-bold text-tahrirchi-error" matTooltip="Imlo">{{(authService.userInfo$ | async).error_type_count.spelling}}</p>
+        <p class="font-bold text-tahrirchi-yellow-500" matTooltip="Punktuatsiya">{{(authService.userInfo$ | async).error_type_count.punctuation}}</p>
+        <p class="font-bold text-tahrirchi-purple" matTooltip="Grammatika">{{(authService.userInfo$ | async).error_type_count.grammar}}</p>
+        <p class="font-bold text-tahrirchi-gradient-end" matTooltip="Ravonlik">{{(authService.userInfo$ | async).error_type_count.fluency}}</p>
+      </div>
+      <p>To'plangan kredit: <span  class="font-bold">{{(authService.userInfo$ | async).calculated_score | currency:'UZS':''}}</span>&nbsp;UZS</p>
+    </div>
+
+
+
+  </nav>
+</div>

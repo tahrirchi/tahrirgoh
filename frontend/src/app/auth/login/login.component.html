@@ -1,0 +1,28 @@
+<div class="flex flex-col max-w-lg mx-auto">
+  <h1 class="font-bold text-2xl">Tizimga kirish</h1>
+
+  <form [formGroup]="form" (submit)="onSubmit()" class="mt-8 space-y-4">
+
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Ism</mat-label>
+      <input type="text" matInput formControlName="username" placeholder="Masalan, Nigora" autocomplete="username"/>
+      <mat-error *ngIf="username?.hasError('required')"> Ismingizni kiritishingiz <strong>shart!</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-full" appearance="fill">
+      <mat-label>Parol</mat-label>
+      <input type="password" matInput formControlName="password" autocomplete="current-password" />
+
+      <mat-error *ngIf="password?.hasError('minlength')">
+        Parolingiz kamida 6 ta belgidan iborat bo‘lishi shart.
+      </mat-error>
+      <mat-error *ngIf="password?.hasError('required')"> Parolni kiritishingiz <strong>shart!</strong> </mat-error>
+    </mat-form-field>
+
+    <button class="w-full btn btn-gradient" type="submit" [disabled]="form.disabled">
+      <span>Kirish</span>
+    </button>
+  </form>
+</div>
+
+

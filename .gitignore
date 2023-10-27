@@ -1,0 +1,13 @@
+.idea/
+__pycache__/
+venv/
+env/
+
+backend/.env
+backend/dev-db.ps1
+backend/run.ps1
+
+frontend/app/node_modules/
+frontend/app/dist/
+frontend/app/.angular/
+frontend/app/.vscode/
