@@ -21,9 +21,23 @@ Be sure to tweak the [frontend/nginx.conf](frontend/nginx.conf) file to your nee
 docker compose up -d
 ```
 
+## Workflow
+
+After you have successfully launched the platform:
+
+1. Create worker users (API)
+2. Add sentences to the platform (API)
+3. Workers annotate sentences
+4. Repeat steps 2 and 3 until you have enough sentences annotated
+5. Download annotated sentences (API)
+
+There is no admin panel implemented in the frontend, but there is a Swagger Docs initialized and available in the backend with user-friendly interface.
+Read more about it in [API Documentation](backend/README.md#api-documentation) section on how to access it and use.
+
+
 ## Cite
 
-If you use this platform during your reserach, please cite us.
+If you use this platform during your research, please cite us.
 
 ```
 @software{Mamasaidov_Tahrirgoh_is_a_2023,

@@ -39,6 +39,21 @@ Apply migrations and run the server:
 alembic upgrade head; uvicorn app.main:app --proxy-headers --host 0.0.0.0 --port 8000 --reload
 ```
 
-Swagger Docs: http://localhost:8000/api/docs
+## API Documentation
 
+Access Swagger Docs at: `<BASE_URL>/api/docs`  _(BASE_URL from .env file)_
 
+![img.png](https://i.imgur.com/1XgRJMa.png)
+
+Initially there is only one user which is admin user with `username` and `password` defined in `.env` file.
+```dotenv
+ADMIN_USERNAME='your_admin_username'
+ADMIN_PASSWORD='your_admin_password'
+```
+
+Only admin user have access to these endpoints:
+- `/user/create` - creating new users in the system
+- `/user/paid` - adding paid amount (the amount will be subtracted when calculating users' earned credits)
+- `/sentence/json` - getting sentences with their annotations in json file
+
+You can make requests through Swagger Docs directly (use it as an admin panel), first you need to authorize your user by clicking on the green **Authorize** button (top right) and entering your username and password.
